@@ -239,7 +239,11 @@ end
 
 local function handle_key_seq(key_seq)
   -- print('handling', key_seq)
-  local active_key_map = current_key_map.action[key_seq]
+  local active_key_map = nil
+
+  if current_key_map.action ~= nil then
+    active_key_map = current_key_map.action[key_seq]
+  end
 
   if active_key_map == nil then
     -- An unexpected key cancels any active hydra
